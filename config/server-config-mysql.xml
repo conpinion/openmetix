@@ -1,0 +1,33 @@
+<iritgo>
+
+	<datasources>
+
+		<datasource id="metix"
+			driverClass="com.mysql.jdbc.Driver"
+			user="metix"
+			password="metix"
+			url="jdbc:mysql://localhost/metix"
+		/>
+
+	</datasources>
+
+	<network>
+
+		<socket
+			port="3000"
+			acceptTimeout="60000"
+			readTimeout="30000"
+			buffer="65536"
+		/>
+
+	</network>
+
+	<threadpool
+		id="system"
+		minThreads="4"/>
+
+	<metix-measurement>
+		<batch-size>360</batch-size>
+	</metix-measurement>
+
+</iritgo>

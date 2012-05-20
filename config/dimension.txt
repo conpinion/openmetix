@@ -1,0 +1,9 @@
+temperature#c, -80.00, 50.00#k, 273.15, 373.15#f, -459.67, 212.00
+barometricpressure#mbar, 900.00, 1100.00#hpa, 900.00, 1100.00
+windspeed#ms, 0.00, 50.00#kmh, 0.00, 180.00#bend, 0.00, 97.20#bft, 0.00, 100
+windgust#ms, 0.00, 100.00#kmh, 0.00, 360#bend, 0.00, 194,4#bft, 0.00, 200
+winddirection#degrees, 0.00, 360.00
+abssunshine#h, 0.00, 24.00
+heightofprecipitation#lm2, 0.00, 25.30#inch, 0.00, 10.00#mm, 0.00, 500.00
+dewpoint#c, -100.00, 40.00#f, -200.00, 100.00
+relhumidity#percent, -80, 100.00

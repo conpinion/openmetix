@@ -1,0 +1,17 @@
+<iritgo>
+
+	<network>
+
+		<socket
+			port="@ANTCONFIG-SERVER-PORT@"
+			readTimeout="30000"
+			buffer="65536"
+		/>
+
+	</network>
+
+	<threadpool
+		id="system"
+		minThreads="2"/>
+
+</iritgo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="2,2,2,2" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<ifieldlabel text="metix-interfacing-friedrichs.unit">
+		<gridbagconstraints use="std" gridx="0" gridy="0"/>
+	</ifieldlabel>
+
+	<itextfield id="unit">
+		<gridbagconstraints use="std" gridx="1" gridy="0" gridwidth="3" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</itextfield>
+
+	<ifieldlabel text="metix-interfacing.interval">
+		<gridbagconstraints use="std" gridx="0" gridy="1"/>
+	</ifieldlabel>
+
+	<slider id="interval" minimum="1" maximum="10">
+		<gridbagconstraints use="std" gridx="1" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</slider>
+
+	<label text="000" id="intervalValue">
+		<gridbagconstraints use="std" gridx="2" gridy="1"/>
+	</label>
+
+	<label text="s">
+		<gridbagconstraints use="std" gridx="3" gridy="1"/>
+	</label>
+
+</panel>

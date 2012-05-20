@@ -1,0 +1,298 @@
+<!--
+    This file is part of the OpenMetix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005-2007 BueroByte GbR.
+    Copyright (C) 2008 Iritgo Technologies.
+
+-->
+
+
+<project name="de.iritgo.openmetix" default="deploy">
+
+	<!-- ==================================================================== -->
+	<!-- Build configuration                                                  -->
+	<!-- ==================================================================== -->
+
+	<property environment="ENV"/>
+
+	<property file="build/ant.properties"/>
+
+	<property name="config.dir" value="${basedir}/config"/>
+	<property name="deploy.dir" value="${basedir}/deploy"/>
+	<property name="deploy.plugins.dir" value="${basedir}/deploy/plugins"/>
+	<property name="deploy.local.dir" value="deploy"/>
+	<property name="deploy.webstart.dir" value="${basedir}/deploy-webstart"/>
+	<property name="deploy.lib.dir" value="${deploy.dir}/lib"/>
+	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="javadoc.dir" value="${basedir}/doc/api"/>
+	<property name="src.dir" value="src"/>
+	<property name="src.java.dir" value="${src.dir}/java"/>
+	<property name="src.resources.dir" value="resources"/>
+	<property name="src.swixml.dir" value="${src.dir}/swixml"/>
+	<property name="dst.dir" value="classes"/>
+	<property name="dst.resources.dir" value="${dst.dir}/resources"/>
+	<property name="iritgo.jar" value="${deploy.dir}/iritgo.jar"/>
+	<property name="jalopy.config" value="config/jalopy.xml"/>
+	<property name="jalopy.iritgo.config" value="config/jalopy-iritgo.xml"/>
+	<property name="deprecation" value="on"/>
+	<property name="dist.dir" value="${basedir}/distribution"/>
+	<property name="compile.linux.classpath" value="${basedir}/lib/linux"/>
+	<property name="compile.windows.classpath" value="${basedir}/lib/windows"/>
+
+	<property file="${config.dir}/buildconfig.properties"/>
+
+	<!-- ==================================================================== -->
+	<!-- Custom tasks                                                         -->
+	<!-- ==================================================================== -->
+
+	<taskdef name="jalopy"
+		classname="de.hunsicker.jalopy.plugin.ant.AntPlugin">
+		<classpath>
+			<fileset dir="build/lib">
+				<include name="*.jar" />
+			</fileset>
+		</classpath>
+	</taskdef>
+
+	<taskdef name="cleanimports"
+		classname="com.tombrus.cleanImports.ant.CleanImports">
+		<classpath>
+			<fileset dir="build/lib">
+				<include name="*.jar" />
+			</fileset>
+		</classpath>
+	</taskdef>
+
+	<taskdef name="multiant"
+		classname="de.grapelabs.tools.ant.MultiAntTask">
+		<classpath>
+			<fileset dir="build/lib">
+				<include name="*.jar" />
+			</fileset>
+		</classpath>
+	</taskdef>
+
+	<!-- ==================================================================== -->
+	<!-- Initialization                                                       -->
+	<!-- ==================================================================== -->
+
+	<path id="compile.linux.classpath">
+		<fileset dir="${lib.dir}/client/linux">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="compile.windows.classpath">
+		<fileset dir="${lib.dir}/client/windows">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<path id="classpath.compile">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>	
+	</path>
+
+	<path id="classpath.run">
+		<pathelement location="${dst.dir}"/>
+		<path refid="classpath.compile"/>
+	</path>
+
+	<target name="-check-config" unless="cfg">
+		<property file="${config.dir}/cfg-all.properties"/>
+	</target>
+
+	<target name="-load-config" if="cfg">
+		<echo message="${config.dir}/cfg-${cfg}.properties"/>
+		<property file="${config.dir}/cfg-${cfg}.properties"/>
+	</target>
+
+	<target name="-check-db" unless="db">
+		<property file="${config.dir}/db-mysql.properties"/>
+	</target>
+
+	<target name="-load-db" if="db">
+		<echo message="${config.dir}/db-${db}.properties"/>
+		<property file="${config.dir}/db-${db}.properties"/>
+	</target>
+
+	<target name="-init" depends="-check-config,-check-db,-load-config,-load-db">
+
+		<tstamp/>
+
+		<condition property="isLinux">
+			<os family="unix"/>
+		</condition>
+
+		<condition property="isWindows">
+			<os family="windows"/>
+		</condition>
+
+		<mkdir dir="${dst.dir}"/>
+		<mkdir dir="${deploy.dir}"/>
+		<mkdir dir="${javadoc.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${deploy.plugins.dir}"/>
+
+	</target>
+
+	<target name="-prepare-linux" if="isLinux">
+		<echo message="Operating System: Linux"/>
+		<property name="compile.native.classpath" value="compile.linux.classpath"/>
+	</target>
+
+	<target name="-prepare-windows" if="isWindows">
+		<echo message="Operating System: Windows"/>
+		<property name="compile.native.classpath" value="compile.windows.classpath"/>
+	</target>
+
+	<target name="-prepare" depends="-init,-prepare-linux,-prepare-windows">
+		<property name="station.number" value="01"/>
+	</target>	
+
+	<!-- ==================================================================== -->
+	<!-- Build the whole system                                               -->
+	<!-- ==================================================================== -->
+
+	<target name="deploy" depends="-prepare">
+
+		<ant antfile="build/build-iritgo.xml" target="deploy" inheritRefs="true"/>
+
+		<multiant directories="${plugin.dirs}" antfile="build-plugin.xml" target="deploy" inheritRefs="false"/>
+
+		<buildnumber file="${config.dir}/build.number"/>
+		<copy todir="${deploy.dir}" >
+			<fileset dir="${config.dir}">
+				<include name="server-config.xml"/>
+				<include name="client-config.xml"/>
+				<include name="build.number"/>
+				<include name="dimension.txt"/>
+				<include name="dimension_de.properties"/>
+				<include name="dimension_en.properties"/>
+			</fileset>
+			<filterset>
+				<filter token="ANTCONFIG-DATABASE-DRIVER" value="${database.driver}"/>
+				<filter token="ANTCONFIG-DATABASE-URL" value="${database.url}"/>
+				<filter token="ANTCONFIG-DATABASE-USERNAME" value="${database.username}"/>
+				<filter token="ANTCONFIG-DATABASE-PASSWORD" value="${database.password}"/>
+				<filter token="ANTCONFIG-SERVER-PORT" value="${server.port}"/>
+			</filterset>
+		</copy>
+	</target>
+
+	<!-- ==================================================================== -->
+	<!-- Create Java API Doc                                                  -->
+	<!-- ==================================================================== -->
+
+	<target name="javadoc" depends="deploy">
+
+		<ant antfile="build/build-iritgo.xml" target="javadoc" inheritRefs="true"/>
+
+		<multiant directories="${plugin.dirs}" antfile="build-plugin.xml" target="javadoc" inheritRefs="false"/>
+
+	</target>
+
+	<!-- ==================================================================== -->
+	<!-- Format the source code                                               -->
+	<!-- ==================================================================== -->
+
+	<target name="format" depends="-init">
+
+		<ant antfile="build/build-iritgo.xml" target="format" inheritRefs="true"/>
+
+		<multiant directories="${plugin.dirs}" antfile="build-plugin.xml" target="format" inheritRefs="false"/>
+
+	</target>		
+
+	<!-- ==================================================================== -->
+	<!-- Create a binary distribution archive							      -->
+	<!-- ==================================================================== -->
+
+	<target name="dist-bin">
+
+		<property name="version" value="2.1.5"/>
+
+		<delete dir="${dist.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${dist.dir}/tmp"/>
+
+		<copy todir="${dist.dir}/tmp/3dparty">
+			<fileset dir="3dparty"/>
+		</copy>
+
+		<copy toDir="${dist.dir}/tmp" file="doc/README"/>
+		<copy toDir="${dist.dir}/tmp" file="LICENSE"/>
+
+		<copy toDir="${dist.dir}/tmp/doc" file="doc/quickstart/OpenMetix-Quickstart.pdf"/>
+
+		<copy todir="${dist.dir}/tmp/bin">
+			<fileset dir="bin"/>
+		</copy>
+
+		<copy todir="${dist.dir}/tmp/lib">
+			<fileset dir="lib"/>
+		</copy>
+
+		<copy todir="${dist.dir}/tmp/sql">
+			<fileset dir="sql"/>
+		</copy>
+
+		<copy todir="${dist.dir}/tmp/deploy">
+			<fileset dir="deploy">
+				<exclude name="lib/**"/>
+			</fileset>
+		</copy>
+
+		<copy todir="${dist.dir}/tmp/deploy/db">
+			<fileset dir="hsqldb"/>
+		</copy>
+
+		<copy toDir="${dist.dir}/tmp/deploy" file="config/server-config-hsqldb.xml"/>
+		<copy toDir="${dist.dir}/tmp/deploy" file="config/server-config-mysql.xml"/>
+		<copy toFile="${dist.dir}/tmp/deploy/server-config.xml" file="config/server-config-hsqldb.xml" overwrite="true"/>
+
+		<zip destfile="${dist.dir}/openmetix-${version}.zip">
+			<zipfileset dir="${dist.dir}/tmp" prefix="openmetix-${version}"/>
+		</zip>
+
+		<tar destfile="${dist.dir}/openmetix-${version}.tar">
+			<tarfileset dir="${dist.dir}/tmp" prefix="openmetix-${version}">
+				<exclude name="**/*.sh"/>
+			</tarfileset>
+			<tarfileset dir="${dist.dir}/tmp/bin" prefix="openmetix-${version}/bin" mode="550">
+				<include name="*.sh"/>
+			</tarfileset>
+		</tar>
+		<gzip src="${dist.dir}/openmetix-${version}.tar" destfile="${dist.dir}/openmetix-${version}.tgz"/>
+		<delete file="${dist.dir}/openmetix-${version}.tar"/>
+
+		<delete dir="${dist.dir}/tmp"/>
+
+	</target>		
+
+	<!-- ==================================================================== -->
+	<!-- Delete all generated files.                                          -->
+	<!-- ==================================================================== -->
+
+	<target name="clean" depends="-init">
+		<multiant directories="${plugin.dirs}" antfile="build-plugin.xml" target="clean" inheritRefs="false"/>
+		<delete dir="${dst.dir}"/>
+		<delete dir="${deploy.dir}"/>
+		<delete dir="${deploy.webstart.dir}"/>
+		<delete dir="${javadoc.dir}"/>
+		<delete dir="${dist.dir}"/>
+	</target>
+
+	<!-- ==================================================================== -->
+	<!-- Delete the deployed files.                                           -->
+	<!-- ==================================================================== -->
+
+	<target name="clean-deploy">
+		<delete dir="${deploy.dir}"/>
+		<delete dir="${deploy.webstart.dir}"/>
+		<delete dir="${dist.dir}"/>
+	</target>
+
+</project>

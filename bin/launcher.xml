@@ -1,0 +1,149 @@
+<project name="Metix Launcher" default="metix-client" basedir=".">
+
+	<property name="app.home" location="${basedir}/.."/>
+
+	<path id="base.class.path">
+		<fileset dir="${app.home}/lib" includes="*.jar">
+			<exclude name="jdom-1.0b.jar" />
+		</fileset>
+		<fileset dir="${app.home}/lib/client" includes="*.jar"/>
+		<fileset file="${app.home}/deploy/iritgo.jar"/>
+		<fileset file="${app.home}/deploy/plugins/metix-core.jar"/>
+		<fileset file="${app.home}/deploy/plugins/metix-interfacing.jar"/>
+	</path>
+
+	<path id="linux.class.path">
+		<path refid="base.class.path"/>
+		<fileset dir="${app.home}/lib/linux">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="windows.class.path">
+		<path refid="base.class.path"/>
+		<fileset dir="${app.home}/lib/windows">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<syspropertyset id="base.sys.properties">
+	</syspropertyset>
+
+	<jvmargset id="base.jvm.args">
+		<jvmarg value="-sourcepath" if="jdb"/>
+		<jvmarg path="${app.home}/../src/java" if="jdb"/>
+		<jvmarg value="-Xdebug" if="jpda.settings"/>
+		<jvmarg value="-Xrunjdwp:${jpda.settings}" if="jpda.settings"/>
+	</jvmargset>
+
+	<target name="-init">
+		<condition property="isLinux">
+			<os family="unix"/>
+		</condition>
+		<condition property="isWindows">
+			<os family="windows"/>
+		</condition>
+	</target>
+
+	<target name="-prepare-linux" if="isLinux">
+		<property name="class.path" value="linux.class.path"/>
+		<property name="native.library.dir" value="${app.home}/lib/linux"/>
+	</target>
+
+	<target name="-prepare-windows" if="isWindows">
+		<property name="class.path" value="windows.class.path"/>
+		<property name="native.library.dir" value="${app.home}/lib/windows"/>
+	</target>
+
+	<target name="-prepare" depends="-init,-prepare-linux,-prepare-windows">
+	</target>
+
+	<target name="-setjdb" description="Set JDB properties" if="debug">
+		<property name="jdb" value="true"/>
+	</target>
+
+	<target name="-prepare-normal">
+		<property name="waitForServer" value="true"/>
+	</target>
+
+	<target name="-prepare-embedd">
+		<property name="waitforserver" value="false"/>
+		<property name="serverArgs" value="-e"/>
+	</target>
+
+	<target name="-setjpda" description="Set JPDA properties" if="jpda">
+		<condition property="jpda.transport" value="dt_shmem">
+			<os family="windows"/>
+		</condition>
+		<condition property="jpda.transport" value="dt_socket">
+			<not>
+				<os family="windows"/>
+			</not>
+		</condition>
+		<condition property="jpda.address" value="jdbconn">
+			<equals arg1="${jpda.transport}" arg2="dt_shmem"/>
+		</condition>
+		<condition property="jpda.address" value="8000">
+			<not>
+				<equals arg1="${jpda.transport}" arg2="dt_shmem"/>
+			</not>
+		</condition>
+		<property name="jpda.suspend" value="y"/>
+		<property name="jpda.settings" value="transport=${jpda.transport},address=${jpda.address},server=y,suspend=${jpda.suspend}"/>
+	</target>
+
+	<target name="-start-server" description="Start the metix server" depends="-setjdb,-setjpda,-prepare">
+		<launch classname="de.iritgo.openmetix.framework.IritgoServer"
+			waitforchild="${waitForServer}"
+			debug="${jdb}"
+			print="${print}"
+			requiretools="true"
+			redirectoutput="false"
+			output="${app.home}/logs/server.log"
+			displayMinimizedWindow="true"
+			disposeMinimizedWindow="true"
+			minimizedWindowTitle="Metix Server"
+		>
+			<sysproperty key="java.library.path" value="${native.library.dir}"/>
+			<jvmargset refid="base.jvm.args"/>
+			<jvmarg value="-Xms64m"/>
+			<jvmarg value="-Xmx1024m"/>
+			<syspropertyset refid="base.sys.properties"/>
+			<classpath refid="${class.path}"/>
+			<arg value="-s ${app.home}/deploy"/>
+			<arg value="${serverArgs}"/>
+		</launch>
+	</target>
+
+	<target name="metix-client" description="Start the metix client" depends="-setjdb,-setjpda,-prepare">
+		<launch classname="de.iritgo.openmetix.framework.IritgoClient"
+			waitforchild="true"
+			debug="${jdb}"
+			print="${print}"
+			requiretools="true"
+			redirectoutput="false"
+			output="${app.home}/logs/server.log"
+			displayMinimizedWindow="true"
+			disposeMinimizedWindow="true"
+			minimizedWindowTitle="Metix Client"
+		>
+			<sysproperty key="java.library.path" value="${native.library.dir}"/>
+			<jvmargset refid="base.jvm.args"/>
+			<jvmarg value="-Xms32m"/>
+			<jvmarg value="-Xmx1024m"/>
+			<syspropertyset refid="base.sys.properties"/>
+			<classpath refid="${class.path}"/>
+			<arg value="-s ${app.home}/deploy"/>
+ 		</launch>
+	</target>
+
+	<target name="metix-server" description="Start the metix server" depends="-prepare-normal">
+		<antcall target="-start-server"/>
+	</target>
+
+	<target name="metix" description="Start the metix server and client" depends="-prepare-embedd">
+		<antcall target="-start-server"/>
+		<antcall target="metix-client"/>
+	</target>
+
+</project>

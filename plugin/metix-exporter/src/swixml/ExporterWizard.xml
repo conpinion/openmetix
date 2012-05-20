@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<gridbagconstraints id="full" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.HORIZONTAL"/>
+
+	<gridbagconstraints id="textfull" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="1.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.HORIZONTAL"/>
+
+	<ititledpanel name="exporterwizard.options" layout="GridBagLayout" title="exporterwizard.options">
+		<gridbagconstraints use="textfull" gridx="1" gridy="0"/>
+
+		<ifieldlabel text="exporterwizard.discription">
+			<gridbagconstraints use="std" gridx="0" gridy="0" gridwidth="5"/>
+		</ifieldlabel>
+
+		<ifieldlabel text="exporterwizard.yearStart">
+			<gridbagconstraints use="std" gridx="1" gridy="1"/>
+		</ifieldlabel>
+		<combobox id="listYearsStart" PrototypeDisplayValue="2000">
+			<gridbagconstraints use="std" gridx="2" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+		<ifieldlabel text="exporterwizard.till">
+			<gridbagconstraints use="std" gridx="3" gridy="1"/>
+		</ifieldlabel>
+		<combobox id="listYearsStop" PrototypeDisplayValue="Sommerzeit">
+			<gridbagconstraints use="std" gridx="4" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+
+		<ifieldlabel text="exporterwizard.year">
+			<gridbagconstraints use="std" gridx="1" gridy="2"/>
+		</ifieldlabel>
+		<combobox id="listYear" PrototypeDisplayValue="2000">
+			<gridbagconstraints use="std" gridx="2" gridy="2" weightx="1.0" gridwidth="3" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+		
+		<ifieldlabel text="exporterwizard.seasons">
+			<gridbagconstraints use="std" gridx="1" gridy="3"/>
+		</ifieldlabel>
+		<combobox id="listSeasons" PrototypeDisplayValue="Sommerzeit">
+			<gridbagconstraints use="std" gridx="2" gridy="3" weightx="1.0" gridwidth="3" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+
+		<ifieldlabel text="exporterwizard.monthStart">
+			<gridbagconstraints use="std" gridx="1" gridy="4"/>
+		</ifieldlabel>
+		<combobox id="listMonthsStart" PrototypeDisplayValue="Dezember">
+			<gridbagconstraints use="std" gridx="2" gridy="4" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+		<ifieldlabel text="exporterwizard.till">
+			<gridbagconstraints use="std" gridx="3" gridy="4"/>
+		</ifieldlabel>
+		<combobox id="listMonthsStop" PrototypeDisplayValue="Dezember">
+			<gridbagconstraints use="std" gridx="4" gridy="4" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+
+		<ifieldlabel text="exporterwizard.month">
+			<gridbagconstraints use="std" gridx="1" gridy="5"/>
+		</ifieldlabel>
+		<combobox id="listMonth" PrototypeDisplayValue="11">
+			<gridbagconstraints use="std" gridx="2" gridy="5" weightx="1.0" gridwidth="3" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+		
+		<ifieldlabel text="exporterwizard.decade">
+			<gridbagconstraints use="std" gridx="1" gridy="6"/>
+		</ifieldlabel>
+		<combobox id="listDecade" PrototypeDisplayValue="1.Dekade">
+			<gridbagconstraints use="std" gridx="2" gridy="6" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+
+		<ifieldlabel text="exporterwizard.dayStart">
+			<gridbagconstraints use="std" gridx="1" gridy="7"/>
+		</ifieldlabel>
+		<combobox id="listDaysStart" PrototypeDisplayValue="00">
+			<gridbagconstraints use="std" gridx="2" gridy="7" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+		<ifieldlabel text="exporterwizard.till">
+			<gridbagconstraints use="std" gridx="3" gridy="7"/>
+		</ifieldlabel>
+		<combobox id="listDaysStop" PrototypeDisplayValue="00">
+			<gridbagconstraints use="std" gridx="4" gridy="7" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+
+		<ifieldlabel text="exporterwizard.day">
+			<gridbagconstraints use="std" gridx="1" gridy="8"/>
+		</ifieldlabel>
+		<combobox id="listDay" PrototypeDisplayValue="00">
+			<gridbagconstraints use="std" gridx="2" gridy="8" weightx="1.0" gridwidth="3" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+
+		<ifieldlabel text="exporterwizard.hourStart">
+			<gridbagconstraints use="std" gridx="1" gridy="9"/>
+		</ifieldlabel>
+		<combobox id="listHoursStart" PrototypeDisplayValue="00">
+			<gridbagconstraints use="std" gridx="2" gridy="9" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+		<ifieldlabel text="exporterwizard.till">
+			<gridbagconstraints use="std" gridx="3" gridy="9"/>
+		</ifieldlabel>
+		<combobox id="listHoursStop" PrototypeDisplayValue="00">
+			<gridbagconstraints use="std" gridx="4" gridy="9" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+
+		<ifieldlabel text="exporterwizard.hour">
+			<gridbagconstraints use="std" gridx="1" gridy="10"/>
+		</ifieldlabel>
+		<combobox id="listHour" PrototypeDisplayValue="00">
+			<gridbagconstraints use="std" gridx="2" gridy="10" weightx="1.0" gridwidth="3" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox>
+
+	</ititledpanel>
+
+	<ititledpanel name="chart.sensorsconfigs" layout="GridBagLayout" title="exporterwizard.sensorlist">
+		<gridbagconstraints use="std" gridx="0" gridy="0" gridheight="3" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+
+		<scrollpane>
+			<gridbagconstraints use="textfull" gridx="0" gridy="0" gridwidth="2" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+			<list id="sensorList" action="sensorSelectedAction"/>
+		</scrollpane>
+
+		<ibutton text="exporterwizard.delete" id="delete" icon="resources/delete.png" action="delSensorAction">
+			<gridbagconstraints use="textfull" gridx="0" gridy="1" gridwidth="2"/>
+		</ibutton>
+	</ititledpanel>
+
+
+<!--
+	<ititledpanel name="parameter.options" layout="GridBagLayout" title="exporterwizard.intervalOptions">
+		<gridbagconstraints use="textfull" gridx="1" gridy="1" anchor="GridBagConstraints.NORTH"/>
+
+		<ifieldlabel text="metix.interval">
+			<gridbagconstraints use="textfull" gridx="0" gridy="0"/>
+		</ifieldlabel>
+
+	</ititledpanel>
+-->
+
+	<ititledpanel name="parameter.options" layout="GridBagLayout" title="exporterwizard.exportSensors">
+		<gridbagconstraints use="textfull" gridx="1" gridy="2" anchor="GridBagConstraints.NORTH"/>
+
+		<istationsensorselector id="stationSensorSelector">
+			<gridbagconstraints use="textfull" gridx="0" gridy="0" gridwidth="3"/>
+		</istationsensorselector>
+
+		<ibutton text="metix.accept" icon="resources/addsensor.png" id="accept" action="sensorAcceptAction">
+			<gridbagconstraints use="textfull" gridx="0" gridy="1" gridwidth="3"/>
+		</ibutton>
+	</ititledpanel>
+
+	<separator>
+		<gridbagconstraints use="std" gridx="0" gridy="3" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</separator>
+
+	<panel layout="FlowLayout(FlowLayout.RIGHT)">
+		<gridbagconstraints use="std" gridx="0" gridy="4" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<ibutton action="okAction" text="metix.ok" icon="resources/ok.png"/>
+		<ibutton action="cancelAction" text="metix.cancel" icon="resources/cancel.png"/>
+	</panel>
+
+</panel>

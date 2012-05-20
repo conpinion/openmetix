@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<ititledpanel name="chart.options" layout="GridBagLayout" title="metix.parameter">
+		<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+
+		<ifieldlabel text="metix.title">
+			<gridbagconstraints use="std" gridx="0" gridy="0"/>
+		</ifieldlabel>
+	
+		<itextfield id="title" autoSelect="true">
+			<gridbagconstraints use="std" gridx="1" gridy="0" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</itextfield> 
+
+		<ifieldlabel text="metix.text">
+			<gridbagconstraints use="std" gridx="0" gridy="1"/>
+		</ifieldlabel>
+
+		<textfield id="textColorDisplay" editable="false">
+			<gridbagconstraints use="std" gridx="1" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</textfield>
+
+		<ibutton text="metix.choose" action="textColorAction">
+			<gridbagconstraints use="std" gridx="2" gridy="1"/>
+		</ibutton>
+
+		<ifieldlabel text="metix.background">
+			<gridbagconstraints use="std" gridx="0" gridy="2"/>
+		</ifieldlabel>
+
+		<textfield id="backgroundColorDisplay" editable="false">
+			<gridbagconstraints use="std" gridx="1" gridy="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</textfield>
+
+		<ibutton text="metix.choose" action="backgroundColorAction" id="backgroundColorChoose">
+			<gridbagconstraints use="std" gridx="2" gridy="2"/>
+		</ibutton>
+
+		<icheckbox id="transparent" text="metix.transparent">
+			<gridbagconstraints use="std" gridx="1" gridy="3" gridwidth="2"/>
+		</icheckbox> 
+
+		<ifieldlabel text="metix.font">
+			<gridbagconstraints use="std" gridx="0" gridy="4"/>
+		</ifieldlabel>
+
+		<textfield id="fontDisplay" editable="false">
+			<gridbagconstraints use="std" gridx="1" gridy="4" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</textfield>
+
+		<ibutton text="metix.choose" action="fontAction">
+			<gridbagconstraints use="std" gridx="2" gridy="4"/>
+		</ibutton>
+
+	</ititledpanel>
+
+	<ititledpanel name="chart.options" layout="GridBagLayout" title="metix.sensors">
+		<gridbagconstraints use="std" gridx="0" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<istationsensorselector id="stationSensorSelector">
+			<gridbagconstraints use="std" gridx="0" gridy="0" gridwidth="3" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</istationsensorselector>
+
+	</ititledpanel>
+
+	<ititledpanel layout="GridBagLayout" title="metix.alarm">
+		<gridbagconstraints use="std" gridx="0" gridy="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<ifieldlabel text="metix.warnMin">
+			<gridbagconstraints use="std" gridx="0" gridy="0"/>
+		</ifieldlabel>
+
+		<checkbox id="warnMin">
+			<gridbagconstraints use="std" gridx="1" gridy="0"/>
+		</checkbox>
+
+		<iformattedtextfield id="warnMinValue" autoSelect="true" enabled="false" horizontalalignment="RIGHT">
+			<gridbagconstraints use="std" gridx="2" gridy="0" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</iformattedtextfield> 
+
+		<ifieldlabel text="metix.warnMax">
+			<gridbagconstraints use="std" gridx="0" gridy="1"/>
+		</ifieldlabel>
+
+		<checkbox id="warnMax">
+			<gridbagconstraints use="std" gridx="1" gridy="1"/>
+		</checkbox>
+
+		<iformattedtextfield id="warnMaxValue" autoSelect="true" enabled="false" horizontalalignment="RIGHT">
+			<gridbagconstraints use="std" gridx="2" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</iformattedtextfield> 
+
+	</ititledpanel>
+
+	<separator>
+		<gridbagconstraints use="std" gridx="0" gridy="3" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</separator>
+
+	<panel layout="FlowLayout(FlowLayout.RIGHT)">
+		<gridbagconstraints use="std" gridx="0" gridy="4" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<ibutton action="okAction" text="metix.ok" icon="resources/ok.png"/>
+		<ibutton action="cancelAction" text="metix.cancel" icon="resources/cancel.png"/>
+	</panel>
+
+</panel>

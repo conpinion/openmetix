@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+ 		This file is part of the Metix application.
+
+		Copyright (C) 2005 BueroByte GmbH.
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<gridbagconstraints id="full" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.HORIZONTAL"/>
+
+	<gridbagconstraints id="textfull" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="1.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.HORIZONTAL"/>
+
+	<ititledpanel name="chart.options" layout="GridBagLayout" title="metix.instrumentOptions">
+		<gridbagconstraints use="textfull" gridx="1" gridy="0"/>
+
+		<ifieldlabel text="metix.title">
+			<gridbagconstraints use="std" gridx="0" gridy="0"/>
+		</ifieldlabel>
+	
+		<itextfield id="title" autoSelect="true">
+			<gridbagconstraints use="textfull" gridx="1" gridy="0"/>
+		</itextfield> 
+
+		<icheckbox text="listinstrument.showstation" id="showStationColumn" action="storeAction">
+			<gridbagconstraints use="full" gridx="0" gridy="1" gridwidth="2"/>
+		</icheckbox>
+
+		<icheckbox text="listinstrument.showdate" id="showDateColumn" action="storeAction">
+			<gridbagconstraints use="full" gridx="0" gridy="2" gridwidth="2"/>
+		</icheckbox>
+
+	</ititledpanel>
+
+	<ititledpanel name="chart.sensorsconfigs" layout="GridBagLayout" title="metix.sensors">
+		<gridbagconstraints use="std" gridx="0" gridy="0" gridheight="2" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+
+		<scrollpane>
+			<gridbagconstraints use="textfull" gridx="0" gridy="0" gridwidth="2" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+			<list id="sensorList" action="sensorSelectedAction"/>
+		</scrollpane>
+
+		<ibutton text="metix.new" icon="resources/new.png" action="addSensorAction">
+			<gridbagconstraints use="textfull" gridx="0" gridy="1"/>
+		</ibutton>
+
+		<ibutton text="metix.delete" id="delete" icon="resources/delete.png" action="delSensorAction">
+			<gridbagconstraints use="textfull" gridx="1" gridy="1"/>
+		</ibutton>
+	</ititledpanel>
+
+	<ititledpanel name="parameter.options" layout="GridBagLayout" title="metix.sensorOptions">
+		<gridbagconstraints use="textfull" gridx="1" gridy="1" anchor="GridBagConstraints.NORTH"/>
+
+		<istationsensorselector id="stationSensorSelector">
+			<gridbagconstraints use="textfull" gridx="0" gridy="0" gridwidth="3"/>
+		</istationsensorselector>
+
+		<ifieldlabel text="metix.warnMax">
+			<gridbagconstraints use="std" gridx="0" gridy="1"/>
+		</ifieldlabel>
+
+		<checkbox id="warnMax">
+			<gridbagconstraints use="std" gridx="1" gridy="1"/>
+		</checkbox>
+
+		<iformattedtextfield id="warnMaxValue" autoSelect="true" horizontalalignment="RIGHT" enabled="false" action="checkWarningRangeAction">
+			<gridbagconstraints use="std" gridx="2" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</iformattedtextfield> 
+
+		<ifieldlabel text="metix.warnMin">
+			<gridbagconstraints use="std" gridx="0" gridy="2"/>
+		</ifieldlabel>
+
+		<checkbox id="warnMin">
+			<gridbagconstraints use="std" gridx="1" gridy="2"/>
+		</checkbox>
+
+		<iformattedtextfield id="warnMinValue" autoSelect="true" horizontalalignment="RIGHT" enabled="false" action="checkWarningRangeAction">
+			<gridbagconstraints use="std" gridx="2" gridy="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</iformattedtextfield> 
+
+		<ibutton text="metix.accept" icon="resources/addsensor.png" id="accept" action="sensorAcceptAction">
+			<gridbagconstraints use="textfull" gridx="0" gridy="3" gridwidth="3"/>
+		</ibutton>
+
+	</ititledpanel>
+
+	<separator>
+		<gridbagconstraints use="std" gridx="0" gridy="2" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</separator>
+
+	<panel layout="FlowLayout(FlowLayout.RIGHT)">
+		<gridbagconstraints use="std" gridx="0" gridy="3" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<ibutton action="okAction" text="metix.ok" icon="resources/ok.png"/>
+		<ibutton action="cancelAction" text="metix.cancel" icon="resources/cancel.png"/>
+	</panel>
+
+</panel>

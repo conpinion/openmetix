@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+ 		This file is part of the Metix application.
+
+		Copyright (C) 2005 BueroByte GmbH.
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="2,2,2,2" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<ititledpanel name="chart.options" layout="GridBagLayout" title="metix.parameter">
+		<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+
+		<ifieldlabel text="metix.title">
+			<gridbagconstraints use="std" gridx="0" gridy="0"/>
+		</ifieldlabel>
+	
+		<itextfield id="title" autoSelect="true">
+			<gridbagconstraints use="std" gridx="1" gridy="0" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</itextfield> 
+
+		<ifieldlabel text="metix.text">
+			<gridbagconstraints use="std" gridx="0" gridy="1"/>
+		</ifieldlabel>
+
+		<textfield id="textColorDisplay" editable="false">
+			<gridbagconstraints use="std" gridx="1" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</textfield>
+
+		<ibutton text="metix.choose" action="textColorAction">
+			<gridbagconstraints use="std" gridx="2" gridy="1"/>
+		</ibutton>
+
+		<ifieldlabel text="metix.font">
+			<gridbagconstraints use="std" gridx="0" gridy="2"/>
+		</ifieldlabel>
+
+		<textfield id="fontDisplay" editable="false">
+			<gridbagconstraints use="std" gridx="1" gridy="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</textfield>
+
+		<ibutton text="metix.choose" action="fontAction">
+			<gridbagconstraints use="std" gridx="2" gridy="2"/>
+		</ibutton>
+
+		<ifieldlabel text="metix.needleShape">
+			<gridbagconstraints use="std" gridx="0" gridy="3"/>
+		</ifieldlabel>
+	
+		<combobox id="needleType">
+			<gridbagconstraints use="std" gridx="1" gridy="3" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</combobox> 
+
+		<ifieldlabel text="metix.needleColor">
+			<gridbagconstraints use="std" gridx="0" gridy="4"/>
+		</ifieldlabel>
+
+		<textfield id="needleColorDisplay" editable="false">
+			<gridbagconstraints use="std" gridx="1" gridy="4" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</textfield>
+
+		<ibutton text="metix.choose" action="needleColorAction">
+			<gridbagconstraints use="std" gridx="2" gridy="4"/>
+		</ibutton>
+		
+		<ifieldlabel text="metix.reverseNeedle">
+				<gridbagconstraints use="std" gridx="0" gridy="5"/>
+		</ifieldlabel>
+			
+		<checkbox id="reverseNeedle">
+				<gridbagconstraints use="std" gridx="1" gridy="5" />
+		</checkbox>
+		
+		<ifieldlabel text="metix.stormForce">
+			<gridbagconstraints use="std" gridx="0" gridy="6"/>
+		</ifieldlabel>
+		
+		<checkbox id="stormForce">
+			<gridbagconstraints use="std" gridx="1" gridy="6" />
+		</checkbox>
+
+		<ifieldlabel text="metix.roseColor">
+			<gridbagconstraints use="std" gridx="0" gridy="7"/>
+		</ifieldlabel>
+
+		<textfield id="roseColorDisplay" editable="false">
+			<gridbagconstraints use="std" gridx="1" gridy="7" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</textfield>
+
+		<ibutton text="metix.choose" action="roseColorAction">
+			<gridbagconstraints use="std" gridx="2" gridy="7"/>
+		</ibutton>
+		
+		<ifieldlabel text="metix.minExtrema">
+				<gridbagconstraints use="std" gridx="0" gridy="8"/>
+		</ifieldlabel>
+			
+		<checkbox id="minExtrema">
+				<gridbagconstraints use="std" gridx="1" gridy="8" />
+		</checkbox>
+		
+		<ifieldlabel text="metix.minExtremaColor">
+			<gridbagconstraints use="std" gridx="0" gridy="9"/>
+		</ifieldlabel>
+
+		<textfield id="minExtremaColorDisplay" editable="false">
+			<gridbagconstraints use="std" gridx="1" gridy="9" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</textfield>
+
+		<ibutton text="metix.choose" action="minExtremaColorAction">
+			<gridbagconstraints use="std" gridx="2" gridy="9"/>
+		</ibutton>
+		
+		<ifieldlabel text="metix.hourExtrema">
+				<gridbagconstraints use="std" gridx="0" gridy="10"/>
+		</ifieldlabel>
+			
+		<checkbox id="hourExtrema">
+				<gridbagconstraints use="std" gridx="1" gridy="10" />
+		</checkbox>
+		
+		<ifieldlabel text="metix.hourExtremaColor">
+			<gridbagconstraints use="std" gridx="0" gridy="11"/>
+		</ifieldlabel>
+
+		<textfield id="hourExtremaColorDisplay" editable="false">
+			<gridbagconstraints use="std" gridx="1" gridy="11" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</textfield>
+
+		<ibutton text="metix.choose" action="hourExtremaColorAction">
+			<gridbagconstraints use="std" gridx="2" gridy="11"/>
+		</ibutton>
+
+	</ititledpanel>
+
+	<ititledpanel name="parameter.options" layout="GridBagLayout" title="metix.sensorOptions">
+		<gridbagconstraints use="full" gridx="0" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<isensorselector id="sensorSelector" action="storeAction">
+			<gridbagconstraints use="textfull" gridx="0" gridy="2" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+		</isensorselector>
+		
+	</ititledpanel>
+
+	<separator>
+		<gridbagconstraints use="std" gridx="0" gridy="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</separator>
+
+	<panel layout="FlowLayout(FlowLayout.RIGHT)">
+		<gridbagconstraints use="std" gridx="0" gridy="3" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<ibutton action="okAction" text="metix.ok" icon="resources/ok.png"/>
+		<ibutton action="cancelAction" text="metix.cancel" icon="resources/cancel.png"/>
+	</panel>
+
+</panel>

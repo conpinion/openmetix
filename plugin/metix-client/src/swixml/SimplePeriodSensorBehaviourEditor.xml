@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="2,2,2,2" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<istationsensorselector id="stationSensorSelector" action="storeAction">
+		<gridbagconstraints use="textfull" gridx="0" gridy="0" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</istationsensorselector>
+
+	<ifieldlabel text="metix.period">
+		<gridbagconstraints use="std" gridx="0" gridy="1"/>
+	</ifieldlabel>
+
+	<itimecombobox id="periodType" format="1">
+		<gridbagconstraints use="textfull" gridx="1" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL" insets="6,2,2,2"/>
+	</itimecombobox>
+
+	<label>
+		<gridbagconstraints use="std" gridx="0" gridy="2" weightx="1.0" weighty="1.0" gridwidth="2" fill="GridBagConstraints.BOTH" insets="4,2,2,2"/>
+	</label>
+
+</panel>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<imenubar>
+
+	<imenu text="metix.file">
+
+		<imenuitem text="metix.recordMeasurement" icon="resources/record.png" action="recordMeasurementAction"/>
+		<imenuitem text="exporterwizard.exportermenuentry" icon="resources/listinstrument.png" action="showExporterWizardAction"/>
+
+		<separator/>
+
+		<imenuitem text="metix.quit" icon="resources/cancel.png" action="quitAction" mnemonic="VK_Q" accelerator="control Q"/>
+
+	</imenu>
+
+	<imenu text="metix.instruments">
+
+		<imenuitem text="metix.insertSimpleInstrument" icon="resources/simpleinstrument.png" action="insertSimpleInstrumentAction" accelerator="control 1"/>
+		<imenuitem text="metix.insertListInstrument" icon="resources/listinstrument.png" action="insertListInstrumentAction" accelerator="control 2"/>
+		<imenuitem text="metix.insertBarInstrument" icon="resources/barinstrument.png" action="insertBarInstrumentAction" accelerator="control 3"/>
+		<imenuitem text="metix.insertRoundInstrument" icon="resources/roundinstrument.png" action="insertRoundInstrumentAction" accelerator="control 4"/>
+		<imenuitem text="metix.insertLineChart" icon="resources/linechart.png" action="insertLineChartAction" accelerator="control 5"/>
+		<imenuitem text="metix.insertWindRoseInstrument" icon="resources/windroseinstrument.png" action="insertWindRoseInstrumentAction" accelerator="control 6"/>
+		<imenuitem text="metix.insertWebInstrument" icon="resources/webinstrument.png" action="insertWebInstrumentAction" accelerator="control 7"/>
+
+		<separator/>
+
+		<imenuitem text="metix.editInstrumentOrChart" icon="resources/edit.png" action="editInstrumentOrDiagramAction" mnemonic="VK_E" accelerator="control E"/>
+
+		<separator/>
+
+		<imenuitem text="metix.printInstrumentOrChart" icon="resources/print.png" action="printInstrumentOrDiagramAction" mnemonic="VK_P" accelerator="control P"/>
+
+	</imenu>
+
+	<imenu text="metix.desktop">
+
+		<imenuitem text="metix.newDesktop" icon="resources/newdesktop.png" action="newDesktopAction" mnemonic="VK_N" accelerator="control N"/>
+		<imenuitem text="metix.renameDesktop" icon="resources/rename.png" action="renameDesktopAction" mnemonic="VK_R" accelerator="control R"/>
+		<imenuitem text="metix.deleteDesktop" icon="resources/delete.png" action="deleteDesktopAction"/>
+
+		<separator/>
+
+		<imenuitem text="metix.saveDesktop" icon="resources/save.png" action="saveDesktopAction" mnemonic="VK_S" accelerator="control S"/>
+
+	</imenu>
+
+	<imenu id="adminMenu" text="metix.administration" visible="false">
+
+		<imenuitem text="metix.gagingStations" icon="resources/gagingstation.png" action="manageGagingStationsAction"/>
+		<imenuitem text="metix.gagingSystems" icon="resources/gagingsystem.png" action="manageGagingSystemsAction"/>
+		<imenuitem text="metix.interfaces" icon="resources/interface.png" action="manageInterfacesAction"/>
+
+		<separator/>
+		
+		<imenuitem text="metix.dimension" icon="resources/dimension.png" action="manageDimensionAction"/>
+		<imenuitem text="metix.datareduction" icon="resources/datareduction.png" action="manageDataReductionAction"/>
+		<!--<imenuitem text="metix.licensing" icon="resources/licensing.png" action="manageLicensingAction"/>-->
+		<imenuitem text="metix.users" icon="resources/people.png" action="manageUsers"/>
+
+	</imenu>
+
+	<imenu text="metix.extras" mnemonic="VK_X">
+
+		<imenuitem text="metix.communication" icon="resources/communication.png" action="showChatter" mnemonic="VK_P"/>
+
+		<separator/>
+
+		<imenuitem text="metix.preferences" icon="resources/preferences.png" action="preferencesAction" mnemonic="VK_P"/>
+
+	</imenu>
+
+	<imenu text="metix.help" mnemonic="VK_H">
+
+		<imenuitem text="systemmonitor" icon="resources/help.png" action="showSystemMonitor" mnemonic="VK_M"/>
+		<imenuitem text="metix.aboutMetix" icon="resources/help.png" action="helpAboutAction" mnemonic="VK_B"/>
+
+	</imenu>
+
+</imenubar>

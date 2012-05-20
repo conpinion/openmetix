@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<gridbagconstraints id="full" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.HORIZONTAL"/>
+
+	<gridbagconstraints id="textfull" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="1.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.HORIZONTAL"/>
+
+	<ititledpanel name="chart.preview" id="preview" layout="GridBagLayout" title="metix.preview">
+		<gridbagconstraints use="full" gridx="0" gridy="0" weightx="0.8" weighty="0.5" fill="GridBagConstraints.BOTH"/>
+	</ititledpanel>
+
+	<ititledpanel name="chart.options" layout="GridBagLayout" title="metix.diagramOptions">
+		<gridbagconstraints use="textfull" gridx="1" gridy="0" weightx="0.2" weighty="0.5" fill="GridBagConstraints.BOTH" anchor="GridBagConstraints.NORTH"/>
+
+		<ifieldlabel text="linechart.title">
+			<gridbagconstraints use="std" gridx="0" gridy="0" gridwidth="2" anchor="GridBagConstraints.WEST"/>
+		</ifieldlabel>
+	
+		<itextfield id="title" autoSelect="true" action="storeAction">
+			<gridbagconstraints use="full" gridx="2" gridy="0" gridwidth="2" anchor="GridBagConstraints.EAST"/>
+		</itextfield> 
+
+		<ifieldlabel text="linechart.timescale">
+			<gridbagconstraints use="std" gridx="0" gridy="1"/>
+		</ifieldlabel>
+	
+		<buttongroup id="domainAxisMode">		
+
+			<radiobutton id="domainAxisInterval" action="storeAction">
+				<gridbagconstraints use="std" gridx="0" gridy="2"/>
+			</radiobutton>
+
+			<ifieldlabel text="linechart.from">
+				<gridbagconstraints use="std" gridx="1" gridy="2"/>
+			</ifieldlabel>
+
+			<ifieldlabel text="linechart.to">
+				<gridbagconstraints use="std" gridx="1" gridy="3"/>
+			</ifieldlabel>
+
+			<panel layout="GridBagLayout">
+				<gridbagconstraints use="textfull" gridx="2" gridy="2" gridwidth="2" gridheight="2"/>
+
+				<iformattedtextfield id="startDate" autoSelect="true" action="storeAction">
+					<gridbagconstraints use="textfull" gridx="0" gridy="0"/>
+				</iformattedtextfield> 
+		
+				<iformattedtextfield id="startTime" autoSelect="true" action="storeAction">
+					<gridbagconstraints use="textfull" gridx="1" gridy="0"/>
+				</iformattedtextfield> 
+
+				<iformattedtextfield id="stopDate" autoSelect="true" action="storeAction">
+					<gridbagconstraints use="textfull" gridx="0" gridy="1"/>
+				</iformattedtextfield> 
+		
+				<iformattedtextfield id="stopTime" autoSelect="true" action="storeAction">
+					<gridbagconstraints use="textfull" gridx="1" gridy="1"/>
+				</iformattedtextfield> 
+			</panel>
+
+			<iradiobutton id="domainAxisCurrent" text="linechart.current" action="storeAction">
+				<gridbagconstraints use="std" gridx="0" gridy="4" gridwidth="2"/>
+			</iradiobutton>
+
+			<iformattedtextfield id="currentDomainCount" autoSelect="true" action="storeAction" horizontalalignment="RIGHT">
+				<gridbagconstraints use="textfull" gridx="2" gridy="4"/>
+			</iformattedtextfield> 
+
+			<itimecombobox id="currentDomainUnits" PrototypeDisplayValue="0123456789|0123456789">
+				<gridbagconstraints use="textfull" gridx="3" gridy="4"/>
+			</itimecombobox>
+
+		</buttongroup>		
+
+		<panel layout="GridBagLayout">
+			<gridbagconstraints use="textfull" gridx="0" gridy="5" gridwidth="4"/>
+
+			<ititledpanel layout="GridBagLayout"  title="metix.timeAxis">
+				<gridbagconstraints use="textfull" gridx="0" gridy="0"/>
+
+				<icheckbox text="linechart.rasterlines" id="showDomainRasterLines" action="storeAction">
+					<gridbagconstraints use="full" gridx="0" gridy="0"/>
+				</icheckbox>
+
+				<icheckbox text="linechart.axislabels" id="showDomainLabels" action="storeAction">
+					<gridbagconstraints use="full" gridx="0" gridy="1"/>
+				</icheckbox>
+
+				<icheckbox text="linechart.ticklabels" id="showDomainTickLabels" action="storeAction">
+					<gridbagconstraints use="full" gridx="0" gridy="2"/>
+				</icheckbox>
+			</ititledpanel>
+
+			<ititledpanel layout="GridBagLayout"  title="metix.domainAxis">
+				<gridbagconstraints use="textfull" gridx="1" gridy="0"/>
+
+				<icheckbox text="linechart.rasterlines" id="showRangeRasterLines" action="storeAction">
+					<gridbagconstraints use="full" gridx="0" gridy="0"/>
+				</icheckbox>
+
+				<icheckbox text="linechart.axislabels" id="showRangeLabels" action="storeAction">
+					<gridbagconstraints use="full" gridx="0" gridy="1"/>
+				</icheckbox>
+
+				<icheckbox text="linechart.ticklabels" id="showRangeTickLabels" action="storeAction">
+					<gridbagconstraints use="full" gridx="0" gridy="2"/>
+				</icheckbox>
+			</ititledpanel>
+
+			<icheckbox text="linechart.legend" id="showLegend" action="storeAction">
+				<gridbagconstraints use="textfull" gridx="0" gridy="2" gridwidth="2"/>
+			</icheckbox>
+
+			<panel layout="GridBagLayout">
+				<gridbagconstraints use="std" gridx="0" gridy="3" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL" insets="0,0,0,0"/>
+
+				<ifieldlabel text="linechart.gridColor">
+					<gridbagconstraints use="std" gridx="0" gridy="0"/>
+				</ifieldlabel>
+
+				<textfield id="gridColorDisplay" editable="false">
+					<gridbagconstraints use="std" gridx="1" gridy="0" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+				</textfield>
+
+				<ibutton id="gridColorChoose" text="metix.choose" action="gridColorAction">
+					<gridbagconstraints use="std" gridx="2" gridy="0"/>
+				</ibutton>
+
+				<ifieldlabel text="metix.font">
+					<gridbagconstraints use="std" gridx="0" gridy="1"/>
+				</ifieldlabel>
+
+				<textfield id="fontDisplay" editable="false">
+					<gridbagconstraints use="std" gridx="1" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+				</textfield>
+
+				<ibutton text="metix.choose" action="fontAction">
+					<gridbagconstraints use="std" gridx="2" gridy="1"/>
+				</ibutton>
+			</panel>
+
+		</panel>
+
+	</ititledpanel>
+
+	<ititledpanel name="chart.sensorsconfigs" layout="GridBagLayout" title="metix.sensors">
+		<gridbagconstraints use="std" gridx="0" gridy="1" weightx="0.8" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+
+		<scrollpane>
+			<gridbagconstraints use="textfull" gridx="0" gridy="0" gridwidth="2" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+			<list id="sensorList" action="sensorSelectedAction"/>
+		</scrollpane>
+
+		<ibutton text="linechart.addsensor" icon="resources/new.png" action="addSensorAction">
+			<gridbagconstraints use="textfull" gridx="0" gridy="1"/>
+		</ibutton>
+
+		<ibutton text="linechart.delsensor" id="delete" icon="resources/delete.png" action="delSensorAction">
+			<gridbagconstraints use="textfull" gridx="1" gridy="1"/>
+		</ibutton>
+	</ititledpanel>
+
+	<ititledpanel name="parameter.options" layout="GridBagLayout" title="metix.sensorOptions">
+		<gridbagconstraints use="textfull" gridx="1" gridy="1" weightx="0.2" weighty="0.5" fill="GridBagConstraints.BOTH" anchor="GridBagConstraints.NORTH"/>
+
+		<istationsensorselector id="stationSensorSelector">
+			<gridbagconstraints use="textfull" gridx="0" gridy="0" gridwidth="2" gridheight="3"/>
+		</istationsensorselector>
+
+		<ifieldlabel text="linechart.axisrange">
+			<gridbagconstraints use="std" gridx="0" gridy="4"/>
+		</ifieldlabel>
+
+		<buttongroup id="axisRangeMode">
+			<iradiobutton id="axisRangeModeAuto" text="linechart.automatically">
+				<gridbagconstraints use="std" gridx="0" gridy="5"/>
+			</iradiobutton>
+
+			<iradiobutton id="axisRangeModeManuel" text="linechart.manually">
+				<gridbagconstraints use="full" gridx="0" gridy="6" anchor="GridBagConstraints.NORTHWEST"/>
+			</iradiobutton>
+
+			<panel name="parameter.manualparameter" layout="GridBagLayout">
+				<gridbagconstraints use="full" gridx="1" gridy="6"/>
+
+				<ibutton text="metix.updatescale" id="updateScale" action="updateAxisAction">
+					<gridbagconstraints use="std" gridx="0" gridy="0" gridwidth="4" anchor="GridBagConstraints.EAST"/>
+				</ibutton>
+
+				<ifieldlabel text="linechart.from">
+					<gridbagconstraints use="std" gridx="0" gridy="1"/>
+				</ifieldlabel>
+
+				<iformattedtextfield id="axisRangeStart" autoSelect="true" horizontalalignment="RIGHT">
+					<gridbagconstraints use="textfull" gridx="1" gridy="1"/>
+				</iformattedtextfield> 
+		
+				<ifieldlabel text="linechart.to">
+					<gridbagconstraints use="std" gridx="2" gridy="1" anchor="GridBagConstraints.EAST"/>
+				</ifieldlabel>
+
+				<iformattedtextfield id="axisRangeStop" autoSelect="true" horizontalalignment="RIGHT">
+					<gridbagconstraints use="textfull" gridx="3" gridy="1"/>
+				</iformattedtextfield>
+			</panel>
+			
+			<iradiobutton id="axisRangeModeTakeFrom" text="linechart.take">
+				<gridbagconstraints use="std" gridx="0" gridy="7"/>
+			</iradiobutton>
+
+			<panel name="parameter.takeparameter" layout="GridBagLayout">
+				<gridbagconstraints use="full" gridx="1" gridy="7"/>
+
+				<ifieldlabel text="linechart.from">
+					<gridbagconstraints use="std" gridx="0" gridy="0"/>
+				</ifieldlabel>
+
+				<combobox id="axisTakeFrom" PrototypeDisplayValue="0123456789|0123456789">
+					<gridbagconstraints use="textfull" gridx="1" gridy="0"/>
+				</combobox>
+			</panel>
+		</buttongroup>
+
+		<panel layout="GridBagLayout">
+			<gridbagconstraints use="std" gridx="0" gridy="8" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL" insets="0,0,0,0"/>
+
+			<ifieldlabel text="metix.warnMin">
+				<gridbagconstraints use="std" gridx="0" gridy="0"/>
+			</ifieldlabel>
+
+			<checkbox id="warnMin">
+				<gridbagconstraints use="std" gridx="1" gridy="0"/>
+			</checkbox>
+
+			<iformattedtextfield id="warnMinValue" autoSelect="true" enabled="false" horizontalalignment="RIGHT" action="checkWarningRangeAction">
+				<gridbagconstraints use="std" gridx="2" gridy="0" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+			</iformattedtextfield> 
+
+			<ifieldlabel text="metix.warnMax">
+				<gridbagconstraints use="std" gridx="0" gridy="1"/>
+			</ifieldlabel>
+
+			<checkbox id="warnMax">
+				<gridbagconstraints use="std" gridx="1" gridy="1"/>
+			</checkbox>
+
+			<iformattedtextfield id="warnMaxValue" autoSelect="true" enabled="false" horizontalalignment="RIGHT" action="checkWarningRangeAction">
+				<gridbagconstraints use="std" gridx="2" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+			</iformattedtextfield> 
+
+			<ifieldlabel text="metix.color">
+				<gridbagconstraints use="std" gridx="0" gridy="2"/>
+			</ifieldlabel>
+
+			<panel layout="GridBagLayout">
+				<gridbagconstraints use="std" gridx="1" gridy="2" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+				<textfield id="lineColorDisplay" editable="false">
+					<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+				</textfield>
+
+				<ibutton id="lineColorChoose" text="metix.choose" action="lineColorAction">
+					<gridbagconstraints use="std" gridx="1" gridy="0"/>
+				</ibutton>
+			</panel>
+
+		</panel>
+
+		<ibutton text="linechart.accept" icon="resources/addsensor.png" id="accept" action="sensorAcceptAction">
+			<gridbagconstraints use="textfull" gridx="0" gridy="9" gridwidth="2"/>
+		</ibutton>
+
+	</ititledpanel>
+
+	<separator>
+		<gridbagconstraints use="std" gridx="0" gridy="3" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</separator>
+
+	<panel layout="FlowLayout(FlowLayout.RIGHT)">
+		<gridbagconstraints use="std" gridx="0" gridy="4" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<ibutton action="okAction" text="metix.ok" icon="resources/ok.png"/>
+		<ibutton action="cancelAction" text="metix.cancel" icon="resources/cancel.png"/>
+	</panel>
+
+</panel>

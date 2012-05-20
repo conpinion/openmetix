@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<itoolbar>
+
+	<ibutton icon="resources/simpleinstrument.png" tooltiptext="metix.insertSimpleInstrument" action="insertSimpleInstrumentAction"/>
+	<ibutton icon="resources/listinstrument.png" tooltiptext="metix.insertListInstrument" action="insertListInstrumentAction"/>
+	<ibutton icon="resources/barinstrument.png" tooltiptext="metix.insertBarInstrument" action="insertBarInstrumentAction"/>
+	<ibutton icon="resources/roundinstrument.png" tooltiptext="metix.insertRoundInstrument" action="insertRoundInstrumentAction"/>
+	<ibutton icon="resources/linechart.png" tooltiptext="metix.insertLineChart" action="insertLineChartAction"/>
+	<ibutton icon="resources/windroseinstrument.png" tooltiptext="metix.insertWindRoseInstrument" action="insertWindRoseInstrumentAction"/>
+	<ibutton icon="resources/webinstrument.png" tooltiptext="metix.insertWebInstrument" action="insertWebInstrumentAction"/>
+
+	<separator/>
+
+	<ibutton icon="resources/edit.png" tooltiptext="metix.editInstrumentOrChart" action="editInstrumentOrDiagramAction"/>
+	<ibutton icon="resources/print.png" tooltiptext="metix.printInstrumentOrChart" action="printInstrumentOrDiagramAction"/>
+
+	<separator/>
+
+	<ibutton icon="resources/newdesktop.png" tooltiptext="metix.newDesktop" action="newDesktopAction"/>
+	<ibutton icon="resources/rename.png" tooltiptext="metix.renameDesktop" action="renameDesktopAction"/>
+	<ibutton icon="resources/save.png" tooltiptext="metix.saveDesktop" action="saveDesktopAction" mnemonic="VK_S" accelerator="control S"/>
+
+</itoolbar>

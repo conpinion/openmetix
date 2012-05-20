@@ -1,0 +1,126 @@
+<!--
+    This file is part of the Irigo Framework.
+
+    Copyright (C) 2004-2005 BueroByte GbR.
+-->
+
+
+<project name="de.iritgo.openmetix.build-iritgo" default="deploy">
+
+	<!-- ==================================================================== -->
+	<!-- System deployment                                                    -->
+	<!-- ==================================================================== -->
+
+	<target name="deploy" depends="compile">
+
+		<copy todir="${dst.resources.dir}">
+			<fileset dir="${src.resources.dir}"/>
+		</copy>
+
+		<copy todir="${dst.dir}">
+			<fileset dir="${src.java.dir}">
+				<include name="**/*.properties"/>
+				<include name="**/*.png"/>
+				<include name="**/*.gif"/>
+			</fileset>
+		</copy>
+
+		<jar jarfile="${deploy.dir}/iritgo.jar" basedir="${dst.dir}"/>
+
+		<copy todir="${deploy.lib.dir}">
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar"/>
+				<include name="**/*.so"/>
+				<include name="**/*.dll"/>
+				<include name="**/*.jnilib"/>
+			</fileset>
+		</copy>
+
+	</target>
+
+	<!-- ==================================================================== -->
+	<!-- Compile sources                                                      -->
+	<!-- ==================================================================== -->
+
+	<target name="compile">
+
+		<buildnumber file="${src.resources.dir}/build.number"/>
+
+		<javac source="${source.version}" srcdir="${src.java.dir}" destdir="${dst.dir}" deprecation="${deprecation}" debug="${debug}">
+			<classpath refid="classpath.compile"/>
+			<classpath refid="${compile.native.classpath}"/>
+		</javac>
+
+	</target>		
+
+	<!-- ==================================================================== -->
+	<!-- Compile tests                                                        -->
+	<!-- ==================================================================== -->
+
+	<target name="test" depends="deploy">
+
+		<javac srcdir="${src.test.dir}" destdir="${dst.dir}" deprecation="${deprecation}" debug="${debug}">
+			<classpath refid="classpath.compile"/>
+		</javac>
+
+		<copy todir="${dst.resources.dir}">
+			<fileset dir="${src.resources.dir}"/>
+		</copy>
+
+		<copy todir="${dst.dir}">
+			<fileset dir="${src.test.dir}">
+				<include name="**/*.properties"/>
+				<include name="**/*.png"/>
+				<include name="**/*.gif"/>
+			</fileset>
+		</copy>
+
+	</target>
+
+	<!-- ==================================================================== -->
+	<!-- Create JavaDoc                                                       -->
+	<!-- ==================================================================== -->
+
+	<target name="javadoc" depends="compile">
+
+		<javadoc
+			source="1.4"
+			additionalparam="-breakiterator"
+			sourcepath="${src.java.dir}"
+			destdir="${javadoc.dir}"
+			packagenames="de.iritgo.*"
+			excludepackagenames=""
+			windowtitle="Iritgo Client/Server-Framework Documentation"
+			doctitle="&lt;div align=center&gt; &lt;b&gt; &lt;font size=+2&gt; ${ant.project.name} library &lt;/font&gt; &lt;/b&gt; &lt;/div&gt;"
+			>
+			<classpath refid="classpath.compile"/>
+		</javadoc>
+
+	</target>		
+
+	<!-- ==================================================================== -->
+	<!-- Format the sources                                                   -->
+	<!-- ==================================================================== -->
+
+	<target name="format">
+
+			<jalopy 
+				fileformat="unix"
+				convention="${jalopy.iritgo.config}"
+				history="file"
+				historymethod="adler32"
+				loglevel="info"
+				threads="2"
+				force="true"
+			>
+				<fileset dir=".">
+					<include name="${src.java.dir}/**/*.java" />
+				</fileset>
+				<fileset dir=".">
+					<include name="${src.test.dir}/**/*.java" />
+				</fileset>
+			</jalopy>
+
+	</target>		
+
+</project>

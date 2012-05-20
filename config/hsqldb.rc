@@ -1,0 +1,5 @@
+urlid metix
+url jdbc:hsqldb:file:deploy/db/metix
+username sa
+password
+charset ISO-8859-1

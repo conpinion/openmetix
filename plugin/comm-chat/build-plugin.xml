@@ -1,0 +1,88 @@
+<!--
+    This file is part of the Iritgo Framework.
+
+    Copyright (C) 2004-2005 BueroByte GbR.
+
+-->
+
+
+<project name="comm-chat" default="deploy">
+
+	<path id="classpath.compile">
+		<pathelement location="${iritgo.jar}"/>
+		<fileset dir="${lib.dir}">
+			<include name="*.jar"/>
+		</fileset>	
+		<fileset dir="${lib.dir}/client">
+			<include name="*.jar"/>
+		</fileset>	
+	</path>
+
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${deploy.local.dir}"/>
+		<mkdir dir="${dst.dir}"/>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src.java.dir}" destdir="${dst.dir}" deprecation="${deprecation}" debug="${debug}">
+			<classpath refid="classpath.compile"/>
+		</javac>
+	</target>
+
+	<target name="deploy" depends="compile">
+		<copy todir="${deploy.local.dir}">
+			<fileset dir="${dst.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+		</copy>
+		<copy todir="${deploy.local.dir}">
+			<fileset dir="resources">
+				<include name="**/*plugin.properties*"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${deploy.local.dir}/resources"/>
+		<copy todir="${deploy.local.dir}/resources">
+			<fileset dir="resources">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		<jar jarfile="${deploy.plugins.dir}/${ant.project.name}.jar" basedir="${deploy.local.dir}"/>
+	</target>
+
+	<target name="javadoc" depends="init">
+		<javadoc
+			source="1.4"
+			additionalparam="-breakiterator"
+			sourcepath="${src.java.dir}"
+			destdir="${javadoc.dir}/plugins/${ant.project.name}"
+			packagenames="de.iritgo.*"
+			excludepackagenames=""
+			windowtitle="Iritgo Client/Server-Framework Documentation"
+			doctitle="&lt;div align=center&gt; &lt;b&gt; &lt;font size=+2&gt; ${ant.project.name} library &lt;/font&gt; &lt;/b&gt; &lt;/div&gt;"
+			>
+			<classpath refid="classpath.compile"/>
+		</javadoc>
+	</target>
+
+	<target name="format">
+		<jalopy 
+			fileformat="unix"
+			convention="${jalopy.iritgo.config}"
+			history="file"
+			historymethod="adler32"
+			loglevel="info"
+			force="true"
+			threads="2">
+			<fileset dir=".">
+				<include name="${src.java.dir}/**/*.java" />
+			</fileset>
+		</jalopy>
+	</target>		
+
+	<target name="clean">
+		<delete dir="${deploy.local.dir}"/>
+		<delete dir="${dst.dir}"/>
+	</target>
+
+</project>

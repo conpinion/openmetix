@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="1,1,1,1" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<ititledpanel name="chart.options" layout="GridBagLayout"  title="datareduction.result">
+		<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+
+		<ilabel id="resultLabelChecking" text="datareduction.checking">
+			<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0"  fill="GridBagConstraints.HORIZONTAL"/>
+		</ilabel>
+		
+		<ilabel id="resultLabelTrue" text="datareduction.true">
+			<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0"  fill="GridBagConstraints.HORIZONTAL"/>
+		</ilabel>
+		
+		<ilabel id="resultLabelFalse" text="datareduction.false">
+			<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0"  fill="GridBagConstraints.HORIZONTAL"/>
+		</ilabel>
+
+	</ititledpanel>
+
+	<separator>
+		<gridbagconstraints use="std" gridx="0" gridy="3" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</separator>
+
+	<panel layout="FlowLayout(FlowLayout.RIGHT)">
+		<gridbagconstraints use="std" gridx="0" gridy="4" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<ibutton action="okAction" text="metix.ok" icon="resources/ok.png"/>
+	</panel>
+
+</panel>

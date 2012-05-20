@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="OverlayLayout" preferredSize="500,360">
+
+	<ilabel text="metix.aboutMetix.version" location="18,80" size="280,24" foreground="737373" font="SansSerif-BOLDITALIC-14"/>
+	<ilabel text="metix.aboutMetix.copyright" location="18,110" size="280,24" foreground="737373" font="SansSerif-BOLDITALIC-14"/>
+
+	<separator location="4,305" size="492,2"/>
+
+	<ibutton action="closeAction" text="metix.close" icon="resources/ok.png" location="195,315" size="110,20"/>
+
+	<label id="background" icon="resources/about.png" size="500,360"/>
+
+</panel>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="2,2,2,2" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<label id="title">
+		<gridbagconstraints use="std" gridx="0" gridy="0" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL" anchor="GridBagConstraints.CENTER"/>
+	</label>
+
+	<separator>
+		<gridbagconstraints use="std" gridx="0" gridy="1" gridwidth="2" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</separator>
+
+	<label id="titleSensor1">
+		<gridbagconstraints use="std" gridx="0" gridy="2" anchor="GridBagConstraints.CENTER"/>
+	</label>
+
+	<label id="titleSensor2">
+		<gridbagconstraints use="std" gridx="1" gridy="2" anchor="GridBagConstraints.CENTER"/>
+	</label>
+
+	<istationsensorselector id="stationSensorSelector1" action="storeAction">
+		<gridbagconstraints use="textfull" gridx="0" gridy="3" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</istationsensorselector>
+
+	<istationsensorselector id="stationSensorSelector2" action="storeAction">
+		<gridbagconstraints use="textfull" gridx="1" gridy="3" weightx="1.0" fill="GridBagConstraints.HORIZONTAL" insets="2,8,2,2"/>
+	</istationsensorselector>
+
+</panel>

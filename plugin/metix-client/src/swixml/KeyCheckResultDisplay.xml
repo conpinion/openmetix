@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout" width="420" height="260">
+
+	<gridbagconstraints id="std" 
+		insets="2,2,2,2" ipadx="100" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<ititledpanel name="chart.options" layout="GridBagLayout" title="metix.licensingCheck">
+		<gridbagconstraints use="std" gridx="0" gridy="0" ipady="30" gridheight="1" gridwidth="1"  weightx="1.0" weighty="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	
+	<ilabel id="labelResultChecking" text="metix.licensingChecking">
+		<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0"  fill="GridBagConstraints.HORIZONTAL"/>
+	</ilabel>
+	
+	<ilabel id="labelResultFalse" text="metix.licensingFalse">
+		<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0"  fill="GridBagConstraints.HORIZONTAL"/>
+	</ilabel>
+	
+	<ilabel id="labelResultTrue" text="metix.licensingTrue">
+		<gridbagconstraints use="std" gridx="0" gridy="0" gridwidth="2" weightx="1.0"  fill="GridBagConstraints.HORIZONTAL"/>
+	</ilabel>
+	
+	<ifieldlabel id="labelNumber" text="metix.licensingNumber">
+		<gridbagconstraints use="std" gridx="0" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</ifieldlabel>
+	
+	<itextfield id="textNumber">
+		<gridbagconstraints use="std" gridx="1" gridy="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</itextfield>
+
+	</ititledpanel>
+
+	<panel layout="FlowLayout(FlowLayout.RIGHT)">
+		<gridbagconstraints use="std" gridx="0" gridy="1" gridwidth="1" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+			<ibutton action="okAction" id="buttonOK" text="metix.ok" icon="resources/ok.png"/>
+	</panel>
+
+</panel>

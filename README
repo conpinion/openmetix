@@ -1,0 +1,31 @@
+OpenMetix Version 2.1.2
+=======================
+
+Compilation
+-----------
+
+Führen Sie im Hauptverzeichnis
+
+ant -Dcfg=all -Ddb=hsqldb
+
+aus um OpenMetix mit allen Plugins und HSQLDB-Anbindung zu kompilieren.
+
+Im Verzechnis 'config' finden Sie weitere mögliche Konfigurationen.
+
+Anschließend können Sie den Server und den Client mit
+
+./bin/metix.sh
+
+starten. Verwenden Sie für die Anmeldung die Benutzer admin/admin
+oder metix/metix.
+
+
+
+Installation
+------------
+
+Um OpenMetix zu installieren und eine kurze Einführung in die Bedienung
+zu erhalten, lesen Sie bitte die Datei
+
+doc/QuickStart-OpenMetix.pdf
+

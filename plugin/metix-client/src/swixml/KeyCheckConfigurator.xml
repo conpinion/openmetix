@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="3,3,3,3" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<ititledpanel name="chart.options" layout="GridBagLayout" title="metix.parameter">
+		<gridbagconstraints use="std" gridx="0" gridy="0" gridwidth="5" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+	
+	<ifieldlabel text="metix.licensingName">
+		<gridbagconstraints use="std" gridx="0" gridy="0"/>
+	</ifieldlabel>
+	
+	<textfield id="licensing" >
+		<gridbagconstraints use="std" gridx="1" gridy="0"  gridwidth="4" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</textfield>
+	
+	<ifieldlabel text="metix.serial" id="serialText">
+		<gridbagconstraints use="std" gridx="0" gridy="1"/>
+	</ifieldlabel>
+	
+	<textfield id="serial_1" Columns="4" >
+		<gridbagconstraints use="std" gridx="1" gridy="1"  weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</textfield>
+	
+	<textfield id="serial_2" Columns="4"  >
+		<gridbagconstraints use="std" gridx="2" gridy="1"  weightx="1.0"  fill="GridBagConstraints.HORIZONTAL"/>
+	</textfield>
+	
+	<textfield id="serial_3" Columns="4"  >
+		<gridbagconstraints use="std" gridx="3" gridy="1"   weightx="1.0"  fill="GridBagConstraints.HORIZONTAL"/>
+	</textfield>
+	
+	<textfield id="serial_4" Columns="4"  >
+		<gridbagconstraints use="std" gridx="4" gridy="1"   weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+	</textfield>
+
+	</ititledpanel>
+
+	<panel layout="FlowLayout(FlowLayout.RIGHT)">
+		<gridbagconstraints use="std" gridx="0" gridy="2" gridwidth="5" weightx="1.0" fill="GridBagConstraints.HORIZONTAL"/>
+
+		<ibutton action="okAction" id="buttonOK" text="metix.ok" icon="resources/ok.png"/>
+		<ibutton action="cancelAction" text="metix.cancel" icon="resources/cancel.png"/>
+	</panel>
+
+</panel>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout">
+
+	<gridbagconstraints id="std" 
+		insets="2,2,2,2" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+	
+	<panel layout="GridBagLayout">
+		<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0" weighty="1.0" fill="GridBagConstraints.BOTH"/>
+
+		<ilabel text="metix.noParametersNeededForThisSensor1">
+			<gridbagconstraints use="std" gridx="0" gridy="0"/>
+		</ilabel>
+
+		<ilabel text="metix.noParametersNeededForThisSensor2">
+			<gridbagconstraints use="std" gridx="0" gridy="1"/>
+		</ilabel>
+
+	</panel>
+
+
+</panel>

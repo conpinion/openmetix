@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+    This file is part of the Metix Application.
+
+    Copyright (C) 2004 lutix GmbH.
+    Copyright (C) 2005 BueroByte GbR.
+
+-->
+
+<panel layout="GridBagLayout" width="420" height="260">
+
+	<gridbagconstraints id="std" 
+		insets="6,6,6,6" ipadx="0" ipady="0" 
+		gridx="0" gridy="0" gridheight="1" gridwidth="1"
+		weightx="0.0" weighty="0.0" 
+		anchor="GridBagConstraints.WEST"
+		fill="GridBagConstraints.NONE"/>
+
+	<label id="title" text="" icon="resources/about.png">
+		<gridbagconstraints use="std" gridx="0" gridy="0" weightx="1.0" anchor="GridBagConstraints.UP"/>
+	</label>
+	<ilabel text="metix.aboutMetix.version">
+		  <gridbagconstraints use="std" gridx="0" gridy="1" /> 
+	</ilabel>
+	<ilabel text="metix.aboutMetix.copyright">
+		  <gridbagconstraints use="std" gridx="0" gridy="2" /> 
+	</ilabel>
+	<ilabel text="metix.aboutMetix.lutix">
+		  <gridbagconstraints use="std" gridx="0" gridy="3" /> 
+	</ilabel>
+	<ilabel text="metix.aboutMetix.iritgo">
+		  <gridbagconstraints use="std" gridx="0" gridy="4" /> 
+	</ilabel>
+</panel>
+
+
